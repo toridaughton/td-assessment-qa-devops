@@ -19,6 +19,15 @@ rollbar.log('Hello world!')
 
 // app.use(express.static(path.join(__dirname, '../public')))
 
+app.get('/', (req,res) => {
+    res.sendFile(path.join(__dirname, './public/index.html'))
+    rollbar.info('html file served successfully.')
+    rollbar.info('File served')
+})
+
+app.get('/styles', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/index.css'))
+})
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, './public/index.html'))
@@ -38,7 +47,7 @@ app.get('/api/robots', (req, res) => {
     try {
         res.status(200).send(botsArr)
     } catch (error) {
-        console.log('ERROR GETTING BOTS', error)
+        rollbar.log('ERROR GETTING BOTS', error)
         res.sendStatus(400)
     }
 })
@@ -50,7 +59,7 @@ app.get('/api/robots/five', (req, res) => {
         let compDuo = shuffled.slice(6, 8)
         res.status(200).send({choices, compDuo})
     } catch (error) {
-        console.log('ERROR GETTING FIVE BOTS', error)
+        rollbar.log('ERROR GETTING FIVE BOTS', error)
         res.sendStatus(400)
     }
 })
