@@ -3,8 +3,19 @@ const path = require('path')
 const app = express()
 const {bots, playerRecord} = require('./data')
 const {shuffleArray} = require('./utils')
+const Rollbar = require(`rollbar`)
 
 app.use(express.json())
+
+
+const rollbar = new Rollbar({
+  accessToken: 'a30a44dc6a224bed9663005b04846040',
+  captureUncaught: true,
+  captureUnhandledRejections: true,
+})
+
+// record a generic message and send it to Rollbar
+rollbar.log('Hello world!')
 
 // app.use(express.static(path.join(__dirname, '../public')))
 

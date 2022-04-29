@@ -3,7 +3,6 @@
 
 // describe('shuffleArray should', () => {
 //     it('check that an array is returned', () => {
-//         let shuffled = shuffleArray()
-//         expect(shuffleArray).toMatch([])
+//         expect.arrayContaining(shuffleArray).toReturn(true)
 //     } )
 // })
