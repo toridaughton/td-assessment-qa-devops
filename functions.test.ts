@@ -1,5 +1,9 @@
-const {shuffleArray} = require('./utils')
+// const {shuffleArray} = require('./utils')
 
-describe('shuffleArray should', () => {
-    // CODE HERE
-})
+
+// describe('shuffleArray should', () => {
+//     it('check that an array is returned', () => {
+//         let shuffled = shuffleArray()
+//         expect(shuffleArray).toMatch([])
+//     } )
+// })
