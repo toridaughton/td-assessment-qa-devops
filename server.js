@@ -35,19 +35,21 @@ app.get('/', (req, res) => {
 
 app.get(`/styles`, (req, res) => {
     res.sendFile(path.join(__dirname, './public/index.css'))
+    rollbar.info('css file served successfully')
 })
 
 app.get('/js', (req, res) => {
     res.sendFile(path.join(__dirname, './public/index.js'))
+    rollbar.info('js file served successfully')
 })
 
 
 
 app.get('/api/robots', (req, res) => {
     try {
-        res.status(200).send(botsArr)
+        res.status(200).send(bots)
     } catch (error) {
-        rollbar.error('ERROR GETTING BOTS', error)
+        rollbar.warning('ERROR GETTING BOTS', error)
         res.sendStatus(400)
     }
 })
@@ -59,7 +61,7 @@ app.get('/api/robots/five', (req, res) => {
         let compDuo = shuffled.slice(6, 8)
         res.status(200).send({choices, compDuo})
     } catch (error) {
-        rollbar.error('ERROR GETTING FIVE BOTS', error)
+        rollbar.critical('ERROR GETTING FIVE BOTS', error)
         res.sendStatus(400)
     }
 })

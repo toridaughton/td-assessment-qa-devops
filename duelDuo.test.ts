@@ -28,6 +28,7 @@ test('check that draw button displays choices div',async () => {
 })
 
 test('check that "Add to Duo" functions', async() => {
+    await driver.findElement(By.id('draw')).click()
     await driver.findElement(By.xpath('//button[@class="bot-btn"]')).click()
     const playerDuo = await driver.findElement(By.id('player-duo'))
     const displayed = await playerDuo.isDisplayed()
